@@ -1,0 +1,14 @@
+.banner {
+    background: url(./Image/bannerbackground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 76vh;
+}
+.btn:focus{
+    background-color: tomato;
+}
+#items:hover{
+    box-shadow: 3px 3px 10px lightgray;
+    border-radius: 20px;
+}

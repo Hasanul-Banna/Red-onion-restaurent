@@ -1,40 +1,41 @@
 import React from 'react';
-import logo from '../../Image/logo2-light.png';
-import cartLogo from '../../Image/ICON/shopping-cart.png';
 import { useState } from 'react';
 import menuData from '../menuData';
 import Items from './Items';
+// import gif from '../../Image/Banner.gif';
 
 const Home = () => {
-    const [menu , setMenu] = useState(menuData);
+    const [menu, setMenu] = useState(menuData);
     // console.log(menu);
     const handleAll = () => {
         setMenu(menuData);
         console.log("done");
     }
     const handleBreakfast = () => {
-
+        const breakfast = menuData.filter(y => y.category === "breakfast");
+        // console.log(breakfast);
+        setMenu(breakfast);
     }
     const handleLunch = () => {
-        
+        const lunch = menuData.filter(y => y.category === "lunch");
+        // console.log(lunch);
+        setMenu(lunch);
     }
     const handleDinner = () => {
-        
+        const dinner = menuData.filter(y => y.category === "dinner");
+        // console.log(dinner);
+        setMenu(dinner);
+    }
+    const handleItem =(e) =>{
+        // console.log(e);
     }
 
     return (
         <div>
-            {/* Navbar */}
-            <div className="d-flex justify-content-between px-5 py-3">
-                <img style={{ height: '50px', }} src={logo} alt="" />
-                <div>
-                    <img style={{ height: '50px', }} className="mx-2" src={cartLogo} alt="" />
-                    <button className="btn btn-danger mx-2">Log in</button>
-                    <button className="btn btn-dark mx-2">Sign Up</button>
-                </div>
-            </div>
             {/* Banner */}
-            <div className="banner"></div>
+            <div className="banner">
+                {/* <img src={gif} alt=""/> */}
+            </div>
             {/* Menu Items */}
             <div className="d-flex justify-content-center">
                 <button onClick={handleAll} className="btn btn-danger mx-3 my-5">All</button>
@@ -44,9 +45,11 @@ const Home = () => {
             </div>
             <div className="container">
                 <div className="row">
-                {
-                    menu.map(x => <Items key={x.item} item={x.item} pic={x.pic} price={x.price}></Items>)
-                }
+                    {
+                        menu.map(x => 
+                        <Items 
+                        x={x} key={x.id} id={x.id} handleItem ={handleItem} item={x.item} pic={x.pic} price={x.price} />)
+                    }
                 </div>
             </div>
         </div>
